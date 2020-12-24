@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainMenuController">
+   <children>
+      <Label fx:id="labelMainMenuTitle" alignment="CENTER" contentDisplay="CENTER" layoutX="231.0" layoutY="14.0" prefHeight="65.0" prefWidth="193.0" text="Main Menu">
+         <font>
+            <Font size="31.0" />
+         </font>
+      </Label>
+      <VBox prefHeight="350.0" prefWidth="154.0" style="-fx-background-color: #03a1fc;" />
+      <VBox alignment="CENTER" layoutX="181.0" layoutY="99.0" prefHeight="200.0" prefWidth="290.0" spacing="25.0">
+         <children>
+            <Button fx:id="appointmentsButton" maxWidth="-Infinity" mnemonicParsing="false" onAction="#onActionViewAppointments" prefHeight="27.0" prefWidth="272.0" style="-fx-background-color: #03a1fc;" text="Appointments" textAlignment="CENTER" />
+            <Button fx:id="customerButton" mnemonicParsing="false" onAction="#onActionViewCustomer" prefHeight="27.0" prefWidth="272.0" style="-fx-background-color: #03a1fc;" text="Customer" />
+            <Button fx:id="viewReports" maxWidth="-Infinity" mnemonicParsing="false" onAction="#onActionViewReports" prefHeight="27.0" prefWidth="272.0" style="-fx-background-color: #03a1fc;" text="Reports" textAlignment="CENTER" />
+            <Button fx:id="exitButton" maxWidth="-Infinity" mnemonicParsing="false" onAction="#onActionExit" prefHeight="27.0" prefWidth="272.0" style="-fx-background-color: #03a1fc;" text="EXIT" textAlignment="CENTER" />
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
