@@ -19,7 +19,7 @@
    <children>
       <VBox alignment="TOP_CENTER" prefHeight="600.0" prefWidth="500.0">
          <children>
-            <Label fx:id="createAppointmentLabel" alignment="CENTER" prefHeight="41.0" prefWidth="500.0" style="-fx-background-color: #03a1fc;" text="Create Appointment">
+            <Label fx:id="createAppointmentLabel" alignment="CENTER" prefHeight="41.0" prefWidth="500.0" style="-fx-background-color: #03a1fc;" text="CREATE APPOINTMENT">
                <font>
                   <Font size="31.0" />
                </font>

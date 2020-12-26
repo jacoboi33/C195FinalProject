@@ -173,24 +173,6 @@ public class CreateAppointmentsController implements Initializable {
         }
     }
 
-//    private boolean checkOverlap() {
-//        AppointmentDAO.findAllAppointments().forEach(e -> {
-//            LocalDate startDate = TimeConverter.getLocalDate(e.getStart());
-//            LocalTime  startTime = TimeConverter.getLocalTime(e.getStart());
-//            LocalDate endDate = TimeConverter.getLocalDate(e.getEnd());
-//            LocalTime  endTime = TimeConverter.getLocalTime(e.getEnd());
-//
-//            LocalDate selectedStartDate = dateDatePicker.getValue();;
-//            LocalTime selectedStartTime = LocalTime.parse(startTimeComboBox.getSelectionModel().getSelectedItem());
-//            LocalDate selectedEndDate = dateDatePicker.getValue();;
-//            LocalTime selectedEndTime = LocalTime.parse(endTimeComboBox.getSelectionModel().getSelectedItem());
-//
-//
-//        });
-//
-//        return false;
-//    }
-
     @FXML
     void onActionSelectCustomer(ActionEvent event) throws IOException {
 
@@ -207,6 +189,8 @@ public class CreateAppointmentsController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         ObservableList<Customer> customerData = CustomerDAO.findAllCustomers();
+        createAppointmentLocationTextField.setText(SingletonLogin.getLocation());
+        System.out.println("Location " + SingletonLogin.getLocation());
 
         customerNameComboBox.setItems(customerData);
         customerNameComboBox.setConverter(new StringConverter<Customer>() {
@@ -317,6 +301,7 @@ public class CreateAppointmentsController implements Initializable {
          * time.
          */
         createAppointmentLocationTextField.setText(SingletonLogin.getLocation());
+        System.out.println("Location " + SingletonLogin.getLocation());
 
         startTimeComboBox.setItems(subTimes);
         startTimeComboBox.getSelectionModel().select(0);

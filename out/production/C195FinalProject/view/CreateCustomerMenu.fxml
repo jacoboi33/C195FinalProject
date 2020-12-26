@@ -18,7 +18,7 @@
    <children>
       <VBox alignment="TOP_CENTER" prefHeight="600.0" prefWidth="400.0">
          <children>
-            <Label text="CREATE CUSTOMER">
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="38.0" prefWidth="402.0" style="-fx-background-color: #03a1fc;" text="CREATE CUSTOMER">
                <font>
                   <Font size="31.0" />
                </font>
@@ -26,7 +26,7 @@
                   <Insets />
                </opaqueInsets>
                <VBox.margin>
-                  <Insets bottom="25.0" top="15.0" />
+                  <Insets bottom="25.0" />
                </VBox.margin>
             </Label>
             <GridPane prefHeight="78.0" prefWidth="600.0">
@@ -200,7 +200,7 @@
                <children>
                   <VBox alignment="CENTER_RIGHT" prefHeight="200.0" prefWidth="100.0">
                      <children>
-                        <Button fx:id="saveButton" mnemonicParsing="false" onAction="#onActionSaveCustomer" text="SAVE" />
+                        <Button fx:id="saveButton" mnemonicParsing="false" onAction="#onActionSaveCustomer" style="-fx-background-color: #03a1fc;" text="SAVE" />
                      </children>
                   </VBox>
                   <VBox alignment="CENTER_RIGHT" prefHeight="200.0" prefWidth="100.0">
@@ -208,7 +208,7 @@
                         <Insets right="25.0" />
                      </HBox.margin>
                      <children>
-                        <Button fx:id="backButton" mnemonicParsing="false" onAction="#onActionViewAppointments" text="BACK" />
+                        <Button fx:id="backButton" mnemonicParsing="false" onAction="#onActionViewAppointments" style="-fx-background-color: #03a1fc;" text="BACK" />
                      </children>
                   </VBox>
                </children>

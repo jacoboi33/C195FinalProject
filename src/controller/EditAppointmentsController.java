@@ -155,7 +155,7 @@ public class EditAppointmentsController implements Initializable {
         } else {
             Long appointmentId = Long.valueOf(idTextField.getText());
             Long selectedCustomerId = customerNameComboBox.getSelectionModel().getSelectedItem().getId();
-            String title = editAppointmentLocationTextField.getText();
+            String title = editAppointmentTitleTextField.getText();
             String location = editAppointmentLocationTextField.getText();
             String contact = editAppointmentContactTextField.getText();
             String type = editAppointmentTypeTextField.getText();

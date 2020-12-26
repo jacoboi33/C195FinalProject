@@ -49,7 +49,32 @@ public class MainMenuController {
     }
 
     @FXML
-    void onActionViewReports(ActionEvent event) throws IOException {
+    void onActionViewMonthlyAppointmentsReport(ActionEvent event) throws IOException {
+        Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
+        Parent scene = FXMLLoader.load(getClass().getResource("/view/MonthlyAppointmentsReport.fxml"));
+        stage.setScene(new Scene(scene));
+    }
 
+    @FXML
+    void onActionViewScheudleReport(ActionEvent event) throws IOException {
+        Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
+        Parent scene = FXMLLoader.load(getClass().getResource("/view/ScheduleReport.fxml"));
+        stage.setScene(new Scene(scene));
+
+    }
+
+    @FXML
+    void onActionViewAppointmentsByTypeReport(ActionEvent event) throws IOException {
+        Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
+        Parent scene = FXMLLoader.load(getClass().getResource("/view/AppointmentTypesReport.fxml"));
+        stage.setScene(new Scene(scene));
+    }
+
+
+    @FXML
+    void onActionViewReports(ActionEvent event) throws IOException {
+        Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
+        Parent scene = FXMLLoader.load(getClass().getResource("/view/Reports.fxml"));
+        stage.setScene(new Scene(scene));
     }
 }
