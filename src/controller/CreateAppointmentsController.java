@@ -174,23 +174,23 @@ public class CreateAppointmentsController implements Initializable {
         }
     }
 
-    private boolean checkOverlap() {
-        AppointmentDAO.findAllAppointments().forEach(e -> {
-            LocalDate startDate = TimeConverter.getLocalDate(e.getStart());
-            LocalTime  startTime = TimeConverter.getLocalTime(e.getStart());
-            LocalDate endDate = TimeConverter.getLocalDate(e.getEnd());
-            LocalTime  endTime = TimeConverter.getLocalTime(e.getEnd());
-
-            LocalDate selectedStartDate = dateDatePicker.getValue();;
-            LocalTime selectedStartTime = LocalTime.parse(startTimeComboBox.getSelectionModel().getSelectedItem());
-            LocalDate selectedEndDate = dateDatePicker.getValue();;
-            LocalTime selectedEndTime = LocalTime.parse(endTimeComboBox.getSelectionModel().getSelectedItem());
-
-
-        });
-
-        return false;
-    }
+//    private boolean checkOverlap() {
+//        AppointmentDAO.findAllAppointments().forEach(e -> {
+//            LocalDate startDate = TimeConverter.getLocalDate(e.getStart());
+//            LocalTime  startTime = TimeConverter.getLocalTime(e.getStart());
+//            LocalDate endDate = TimeConverter.getLocalDate(e.getEnd());
+//            LocalTime  endTime = TimeConverter.getLocalTime(e.getEnd());
+//
+//            LocalDate selectedStartDate = dateDatePicker.getValue();;
+//            LocalTime selectedStartTime = LocalTime.parse(startTimeComboBox.getSelectionModel().getSelectedItem());
+//            LocalDate selectedEndDate = dateDatePicker.getValue();;
+//            LocalTime selectedEndTime = LocalTime.parse(endTimeComboBox.getSelectionModel().getSelectedItem());
+//
+//
+//        });
+//
+//        return false;
+//    }
 
     @FXML
     void onActionSelectCustomer(ActionEvent event) throws IOException {
@@ -208,15 +208,6 @@ public class CreateAppointmentsController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         ObservableList<Customer> customerData = CustomerDAO.findAllCustomers();
-
-
-//        try {
-//            AppointmentDAO.getStartAndEndDateTime().forEach(e -> {
-////                System.out.println("cac " + e);
-//            });
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
 
         customerNameComboBox.setItems(customerData);
         customerNameComboBox.setConverter(new StringConverter<Customer>() {
@@ -239,12 +230,6 @@ public class CreateAppointmentsController implements Initializable {
             }
 
         });
-
-//        System.out.println(times.subList(32, 69));
-
-
-//        System.out.println(startTimeComboBox.getSelectionModel().setSelectionIndex());
-//        endTimeComboBox.setItems(FXCollections.observableArrayList(times.subList(32, 69)));
 
         /**
          * Setting the id when saving.
@@ -359,7 +344,8 @@ public class CreateAppointmentsController implements Initializable {
     }
 
     /**
-     * Check for empty fields in form.
+     * Validates the form fields to make sure they are filled in
+     * if not there will be a red * where there needs to be text.
      * @param noErrors
      * @return
      */

@@ -1,11 +1,5 @@
 package model;
 
-import javafx.beans.value.ObservableValue;
-import utils.DataTransferObject;
-
-import java.sql.Timestamp;
-import java.util.Calendar;
-
 public class Appointment {
     private Long id;
     private Long customerId;
@@ -24,6 +18,7 @@ public class Appointment {
     private String createBy;
     private String lastUpdate;
     private String lastUpdateBy;
+    private Customer customer;
 
     public Appointment(Long id, Long customerId, Long userId, String customerName, String userName, String title, String description, String location, String contact, String type, String url, String start, String end, String createDate, String createBy, String lastUpdate, String lastUpdateBy) {
         this.id = id;
@@ -62,6 +57,17 @@ public class Appointment {
         this.lastUpdateBy = lastUpdateBy;
     }
 
+    public Appointment(Long id, Customer customer, String title, String description, String location, String type, String start, String end) {
+        this.id = id;
+        this.customer = customer;
+        this.title = title;
+        this.description = description;
+        this.location = location;
+        this.type = type;
+        this.start = start;
+        this.end = end;
+    }
+
     public Appointment(){}
 
     public Long getId() {
@@ -90,6 +96,10 @@ public class Appointment {
 
     public String getCustomerName() {
         return customerName;
+    }
+
+    public Customer getCustomer() {
+        return customer;
     }
 
     public void setCustomerName(String customerName) {
@@ -199,4 +209,5 @@ public class Appointment {
     public void setLastUpdateBy(String lastUpdateBy) {
         this.lastUpdateBy = lastUpdateBy;
     }
+
 }

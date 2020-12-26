@@ -46,9 +46,10 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0">
+                  <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="1">
                      <children>
                         <Label fx:id="customerNameLabel" text="CUSTOMER NAME:">
                            <padding>
@@ -57,22 +58,7 @@
                         </Label>
                      </children>
                   </HBox>
-                  <TextField fx:id="editAppointmentTitleTextField" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                     <GridPane.margin>
-                        <Insets right="25.0" />
-                     </GridPane.margin>
-                  </TextField>
-                  <TextField fx:id="editAppointmentLocationTextField" GridPane.columnIndex="1" GridPane.rowIndex="3">
-                     <GridPane.margin>
-                        <Insets right="25.0" />
-                     </GridPane.margin>
-                  </TextField>
-                  <TextField fx:id="editAppointmentContactTextField" GridPane.columnIndex="1" GridPane.rowIndex="4">
-                     <GridPane.margin>
-                        <Insets right="25.0" />
-                     </GridPane.margin>
-                  </TextField>
-                  <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="1">
+                  <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="2">
                      <children>
                         <Label fx:id="titleLabel" alignment="CENTER_RIGHT" text="TITLE:">
                            <padding>
@@ -81,7 +67,7 @@
                         </Label>
                      </children>
                   </HBox>
-                  <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="2">
+                  <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="3">
                      <children>
                         <Label fx:id="descriptionLabel" text="DESCRIPTION:">
                            <padding>
@@ -90,7 +76,7 @@
                         </Label>
                      </children>
                   </HBox>
-                  <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="3">
+                  <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="4">
                      <children>
                         <Label fx:id="locationLabel" text="LOCATION:">
                            <padding>
@@ -99,7 +85,7 @@
                         </Label>
                      </children>
                   </HBox>
-                  <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="4">
+                  <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="5">
                      <children>
                         <Label fx:id="contactLabel" text="CONTACT:">
                            <padding>
@@ -108,7 +94,7 @@
                         </Label>
                      </children>
                   </HBox>
-                  <HBox fx:id="typeLabel" alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="5">
+                  <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="6">
                      <children>
                         <Label fx:id="typeLabel" text="TYPE:">
                            <padding>
@@ -117,7 +103,7 @@
                         </Label>
                      </children>
                   </HBox>
-                  <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="6">
+                  <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="7">
                      <children>
                         <Label fx:id="urlLabel" text="URL:">
                            <padding>
@@ -129,28 +115,13 @@
                         </Label>
                      </children>
                   </HBox>
-                  <TextField fx:id="editAppointmentTypeTextField" GridPane.columnIndex="1" GridPane.rowIndex="5">
-                     <GridPane.margin>
-                        <Insets right="25.0" />
-                     </GridPane.margin>
-                  </TextField>
-                  <TextField fx:id="editAppointmentUrlTextField" GridPane.columnIndex="1" GridPane.rowIndex="6">
-                     <GridPane.margin>
-                        <Insets right="25.0" />
-                     </GridPane.margin>
-                  </TextField>
-                  <TextArea fx:id="editAppointmentDescriptionTextArea" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
-                     <GridPane.margin>
-                        <Insets right="25.0" />
-                     </GridPane.margin>
-                  </TextArea>
-                  <ComboBox fx:id="customerNameComboBox" onAction="#onActionSelectCustomer" prefWidth="150.0" GridPane.columnIndex="1" />
-                  <HBox alignment="CENTER_LEFT" prefHeight="79.0" prefWidth="400.0" GridPane.columnIndex="1" GridPane.rowIndex="7">
+                  <HBox alignment="CENTER_LEFT" prefHeight="79.0" prefWidth="400.0" GridPane.columnIndex="1" GridPane.rowIndex="8">
                      <children>
                         <DatePicker fx:id="dateDatePicker" />
+                        <Label fx:id="errorLabelDate" />
                      </children>
                   </HBox>
-                  <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="7">
+                  <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="8">
                      <children>
                         <Label fx:id="dateLabel" text="DATE:">
                            <padding>
@@ -159,7 +130,7 @@
                         </Label>
                      </children>
                   </HBox>
-                  <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="8">
+                  <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="9">
                      <children>
                         <Label fx:id="startTimeLabel" alignment="CENTER_RIGHT" text="START TIME:">
                            <padding>
@@ -168,7 +139,7 @@
                         </Label>
                      </children>
                   </HBox>
-                  <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="9">
+                  <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="10">
                      <children>
                         <Label fx:id="endTimeLabel" text="END TIME:" />
                      </children>
@@ -176,8 +147,73 @@
                         <Insets right="15.0" />
                      </padding>
                   </HBox>
-                  <ComboBox fx:id="startTimeComboBox" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="8" />
-                  <ComboBox fx:id="endTimeComboBox" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+                  <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label fx:id="labelId" alignment="CENTER_RIGHT" onDragDetected="#onActionLabelId" text="ID:" />
+                     </children>
+                     <GridPane.margin>
+                        <Insets right="15.0" />
+                     </GridPane.margin>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1">
+                     <children>
+                        <TextField fx:id="idTextField" disable="true" editable="false" onAction="#onActionIdTextField" prefHeight="27.0" prefWidth="87.0" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                     <children>
+                        <TextField fx:id="editAppointmentTitleTextField" prefHeight="27.0" prefWidth="310.0" />
+                        <Label fx:id="errorLabelTitle" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                     <children>
+                        <TextArea fx:id="editAppointmentDescriptionTextArea" prefHeight="43.0" prefWidth="310.0" />
+                        <Label fx:id="errorLabelDescription" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                     <children>
+                        <TextField fx:id="editAppointmentLocationTextField" prefHeight="27.0" prefWidth="310.0" />
+                        <Label fx:id="errorLabelLocation" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                     <children>
+                        <TextField fx:id="editAppointmentContactTextField" prefHeight="27.0" prefWidth="310.0" />
+                        <Label fx:id="errorLabelContact" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                     <children>
+                        <TextField fx:id="editAppointmentTypeTextField" prefHeight="27.0" prefWidth="310.0" />
+                        <Label fx:id="errorLabelType" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="7">
+                     <children>
+                        <TextField fx:id="editAppointmentUrlTextField" prefHeight="27.0" prefWidth="310.0" />
+                        <Label fx:id="errorLabelUrl" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="9">
+                     <children>
+                        <ComboBox fx:id="startTimeComboBox" prefWidth="150.0" />
+                        <Label fx:id="errorLabelStartTime" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="10">
+                     <children>
+                        <ComboBox fx:id="endTimeComboBox" prefWidth="150.0" />
+                        <Label fx:id="errorLabelEndTime" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <children>
+                        <ComboBox fx:id="customerNameComboBox" onAction="#onActionSelectCustomer" prefWidth="150.0" />
+                        <Label fx:id="errorLabelCustomerName" />
+                     </children>
+                  </HBox>
                </children>
             </GridPane>
             <HBox alignment="CENTER_RIGHT" layoutX="10.0" layoutY="468.0" prefHeight="79.0" prefWidth="400.0">

@@ -26,6 +26,7 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class ViewAppointmentsController implements Initializable {
+    Stage stage;
 
     @FXML
     private Label viewAppointmentsLabel;
@@ -111,25 +112,6 @@ public class ViewAppointmentsController implements Initializable {
 
     @FXML
     void onActionDeleteAppointment(ActionEvent event) throws Exception {
-//        deleteButton.setOnAction(e -> {
-//            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-//            alert.setTitle("Delete Appointment");
-//            alert.setHeaderText("Confirm Delete Appointment");
-//            alert.setContentText("Are you sure you want to delete this appointment ? ");
-//            Optional<ButtonType> result = alert.showAndWait();
-//            if (result.get() == ButtonType.OK) {
-//                try {
-//                    AppointmentDAO.deleteAppointment(appointmentsTable.getSelectionModel().getSelectedItem().getId());
-//                    setAppointmentView(AppointmentDAO.findAllAppointments());
-////                    alert.close();
-//                } catch (Exception ioException) {
-//                    ioException.printStackTrace();
-//                }
-//            } else {
-//                alert.close();
-//            }
-//
-//        });
         Long selectedAppointmentId;
         if(appointmentsTable.getSelectionModel().isEmpty())
             return;
@@ -152,9 +134,7 @@ public class ViewAppointmentsController implements Initializable {
 
     @FXML
     void onActionEditAppointment(ActionEvent event) throws IOException {
-        Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
-        Parent scene = FXMLLoader.load(getClass().getResource("/view/EditAppointmentsMenu.fxml"));
-        stage.setScene(new Scene(scene));
+        loadAndSendAppointment(event);
     }
 
     @FXML
@@ -179,6 +159,31 @@ public class ViewAppointmentsController implements Initializable {
 
         appointmentsTable.setItems(appointments);
 
+    }
+
+    private void loadAndSendAppointment(ActionEvent event) {
+        Appointment getSelectedAppointment = appointmentsTable.getSelectionModel().getSelectedItem();
+        if(getSelectedAppointment == null)
+            return;
+
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/view/EditAppointmentsMenu.fxml"));
+            loader.load();
+
+            EditAppointmentsController controller = loader.getController();
+            controller.updateAppointmentTextFields(getSelectedAppointment);
+
+            stage = (Stage)((Button)event.getSource()).getScene().getWindow();
+            Parent scene = loader.getRoot();
+            stage.setScene(new Scene(scene));
+            stage.show();
+        } catch (IOException e) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Not Selected");
+            alert.setContentText("No Appointments selected, Please select an appointment " + e.getMessage());
+            alert.showAndWait();
+        }
 
     }
 }

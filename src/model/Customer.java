@@ -35,6 +35,11 @@ public class Customer extends Address {
         this.lastUpdateBy = lastUpdateBy;
     }
 
+    public Customer(Long id, String customerName) {
+        this.id = id;
+        this.customerName = customerName;
+    }
+
     public Customer() { super(); }
 
 //    public Customer(Long customerId, String customerName, Byte active, String address, String postalCode, String phone, String city, String country, String createDate) {

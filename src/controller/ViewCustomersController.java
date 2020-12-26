@@ -158,7 +158,6 @@ public class ViewCustomersController implements Initializable {
 
     private void loadAndSendCustomer(ActionEvent event) {
 
-
         Customer getSelectedCustomer = customerTable.getSelectionModel().getSelectedItem();
 
         try {
