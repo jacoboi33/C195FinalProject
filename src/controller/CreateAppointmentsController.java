@@ -150,7 +150,6 @@ public class CreateAppointmentsController implements Initializable {
             String description = createAppointmentDescriptionTextArea.getText();
             LocalDate date = dateDatePicker.getValue();
             LocalTime startTime = LocalTime.parse(startTimeComboBox.getSelectionModel().getSelectedItem());
-//            startTimeComboBox.getSelectionModel()
             LocalTime endTime = LocalTime.parse(endTimeComboBox.getSelectionModel().getSelectedItem());
 
             String val = AppointmentDAO.insertAppointment(selectedCustomerId,
@@ -261,9 +260,6 @@ public class CreateAppointmentsController implements Initializable {
             try {
                 AppointmentDAO.getStartAndEndDateTime().forEach(d -> {
                     if(d.contains(localDate.toString())) {
-//                        System.out.println("contains " + d.contains(localDate.toString()));
-                        //                                System.out.println(f.contains(d));
-                        //                            System.out.println(f.contains(d));
 
                         AppointmentDAO.getAppointmentTimes().stream().filter(d::contains).forEach(f -> {
                             System.out.println("f " + f);
@@ -314,8 +310,6 @@ public class CreateAppointmentsController implements Initializable {
         ObservableList<String> times = AppointmentDAO.getAppointmentTimes();
         ObservableList<String> subTimes = FXCollections.observableArrayList(times.subList(32, 69));
         subTimes.removeAll(scheduledTimes);
-//        scheduledTimes.forEach(System.out::println);
-//        subTimes.forEach(System.out::println);
 
         /**
          * Onload create appointment set start and end times
@@ -324,8 +318,6 @@ public class CreateAppointmentsController implements Initializable {
          */
         createAppointmentLocationTextField.setText(SingletonLogin.getLocation());
 
-//        startTimeComboBox.setEditable(true);
-//        endTimeComboBox.setEditable(true);
         startTimeComboBox.setItems(subTimes);
         startTimeComboBox.getSelectionModel().select(0);
         endTimeComboBox.setItems(subTimes);
@@ -337,10 +329,6 @@ public class CreateAppointmentsController implements Initializable {
             endTimeComboBox.setItems(endTime);
             endTimeComboBox.getSelectionModel().select(0);
         });
-    }
-
-    private void removeDateTime() {
-
     }
 
     /**

@@ -110,50 +110,6 @@ public class ViewCustomersController implements Initializable {
     void onActionEditCustomer(ActionEvent event) throws IOException {
 
         loadAndSendCustomer(event);
-//        customerTableView();
-//        Customer getSelectedCustomer = customerTable.getSelectionModel().getSelectedItem();
-//
-//        if (getSelectedCustomer != null) {
-//            EditCustomerController controller = new EditCustomerController();
-//            controller.updateCustomerTextFields(getSelectedCustomer);
-//
-//            Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
-//            Parent scene = FXMLLoader.load(getClass().getResource("/view/EditCustomerMenu.fxml"));
-//            stage.setScene(new Scene(scene));
-
-//            FXMLLoader loader = new FXMLLoader();
-//            loader.setLocation(getClass().getResource("/view/EditCustomerMenu.fxml"));
-//            Parent tableViewScene = loader.load();
-//            Scene customerScene = new Scene(tableViewScene);
-//
-//
-//
-//            Stage window = new Stage();
-//            window.setTitle("Edit Customer");
-//            window.setScene(customerScene);
-//            window.show();
-//        } else {
-//            Alert alert = new Alert(Alert.AlertType.WARNING);
-//            alert.setTitle("Not Selected");
-//            alert.setContentText("No customer selected, Please select a customer");
-//            alert.showAndWait();
-//        }
-
-//        Customer customer = customerTable.getSelectionModel().getSelectedItem();
-//        if(customer == null)
-//            return;
-//
-//        FXMLLoader loader = new FXMLLoader();
-//        loader.setLocation(getClass().getResource("/view/EditCustomerMenu.fxml"));
-//        EditCustomerController cc = loader.getController();
-//
-//        cc.updateCustomerTextFields(customer);
-//
-//        Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
-////        Parent scene = FXMLLoader.load(getClass().getResource("/view/EditCustomerMenu.fxml"));
-//        Parent scene = loader.getRoot();
-//        stage.setScene(new Scene(scene));
-//        stage.show();
     }
 
     private void loadAndSendCustomer(ActionEvent event) {
@@ -172,18 +128,6 @@ public class ViewCustomersController implements Initializable {
             Parent scene = loader.getRoot();
             stage.setScene(new Scene(scene));
             stage.show();
-
-//            FXMLLoader loader = new FXMLLoader();
-//            loader.setLocation(getClass().getResource("/view/EditCustomerMenu.fxml"));
-//            Parent tableViewScene = loader.load();
-//            Scene customerScene = new Scene(tableViewScene);
-//
-//            EditCustomerController controller = loader.getController();
-//            controller.updateCustomerTextFields(getSelectedCustomer);
-//
-//            Stage window = new Stage();
-//            window.setScene(customerScene);
-//            window.show();
 
         } catch (IOException e) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
