@@ -21,13 +21,10 @@ import utils.TimeConverter;
 
 import java.io.IOException;
 import java.net.URL;
-import java.time.LocalDate;
-import java.time.LocalTime;
-import java.time.ZoneId;
-import java.time.ZonedDateTime;
+import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
-import java.util.TimeZone;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class CreateAppointmentsController implements Initializable {
     private Long id;
@@ -132,7 +129,7 @@ public class CreateAppointmentsController implements Initializable {
     private Button cancelButton;
 
     @FXML
-    void onActionCreateAppointment(ActionEvent event) throws IOException {
+    void onActionCreateAppointment(ActionEvent event) throws Exception {
 
         if(!isNoErrors(true)) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -190,7 +187,7 @@ public class CreateAppointmentsController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         ObservableList<Customer> customerData = CustomerDAO.findAllCustomers();
         createAppointmentLocationTextField.setText(SingletonLogin.getLocation());
-        System.out.println("Location " + SingletonLogin.getLocation());
+//        System.out.println("Location " + SingletonLogin.getLocation());
 
         customerNameComboBox.setItems(customerData);
         customerNameComboBox.setConverter(new StringConverter<Customer>() {
@@ -220,8 +217,6 @@ public class CreateAppointmentsController implements Initializable {
         customerNameComboBox.valueProperty().addListener((obs, oldValue, newValue) -> {
             if(newValue != null)
                 id = newValue.getId();
-//
-            System.out.println("id " + id);
         });
 
         /**
@@ -237,30 +232,23 @@ public class CreateAppointmentsController implements Initializable {
      * create and update can use a lot of the same features.
      */
     private void dateTimePicker() {
-        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss");
         ObservableList<String> subTimes = FXCollections.observableArrayList();
+
         dateDatePicker.valueProperty().addListener(e -> {
             LocalDate localDate = dateDatePicker.getValue();
             try {
                 AppointmentDAO.getStartAndEndDateTime().forEach(d -> {
                     if(d.contains(localDate.toString())) {
-
                         AppointmentDAO.getAppointmentTimes().stream().filter(d::contains).forEach(f -> {
-                            System.out.println("f " + f);
-                            System.out.println("d " + d);
                             String startTime = d.substring(11, 19);
                             String endTime = d.substring(32, 40);
-                            System.out.println("Start Time " + startTime + " end time " + endTime);
-
                             LocalTime startLocalTime = TimeConverter.getLocalTime2(startTime);
                             LocalTime endLocalTime = TimeConverter.getLocalTime2(endTime);
 
                             if(!startLocalTime.plusMinutes(15).equals(endLocalTime)) {
                                 while (!startLocalTime.plusMinutes(15).equals(endLocalTime)) {
-                                    System.out.println("startloctime " + startLocalTime);
                                     subTimes.add(startLocalTime.toString()+":00");
                                     startLocalTime = startLocalTime.plusMinutes(15);
-                                    System.out.println("startlocaltime " + startLocalTime);
                                 }
                                 subTimes.add(startLocalTime.toString()+":00");
 //                                subTimes.add(endLocalTime.toString()+":00");
@@ -270,7 +258,7 @@ public class CreateAppointmentsController implements Initializable {
                         });
                     }
                 });
-                subTimes.forEach(j -> System.out.println("time " + j));
+//                subTimes.forEach(j -> System.out.println("time " + j));
                 generateTimes(subTimes);
             } catch (Exception exception) {
                 exception.printStackTrace();
@@ -293,27 +281,57 @@ public class CreateAppointmentsController implements Initializable {
     public void generateTimes(ObservableList<String> scheduledTimes) {
         ObservableList<String> times = AppointmentDAO.getAppointmentTimes();
         ObservableList<String> subTimes = FXCollections.observableArrayList(times.subList(32, 69));
+//        ObservableList<String> subEndTimes = FXCollections.observableArrayList();
+
         subTimes.removeAll(scheduledTimes);
+
 
         /**
          * Onload create appointment set start and end times
          * Also increase the endTimeComboBox when the startTimeComboBox changes
          * time.
          */
-        createAppointmentLocationTextField.setText(SingletonLogin.getLocation());
+//        createAppointmentLocationTextField.setText(SingletonLogin.getLocation());
         System.out.println("Location " + SingletonLogin.getLocation());
 
         startTimeComboBox.setItems(subTimes);
         startTimeComboBox.getSelectionModel().select(0);
-        endTimeComboBox.setItems(subTimes);
+        selectTimes(subTimes);
+//        endTimeComboBox.setItems(subTimes);
         endTimeComboBox.getSelectionModel().select(1);
         startTimeComboBox.setOnAction((e) -> {
-            int index = startTimeComboBox.getSelectionModel().getSelectedIndex() + 1;
-            ObservableList<String> endTime = FXCollections.observableArrayList(subTimes.subList(index, subTimes.size() -1 ));
-//                    System.out.println(index);
-            endTimeComboBox.setItems(endTime);
-            endTimeComboBox.getSelectionModel().select(0);
+            selectTimes(subTimes);
         });
+    }
+
+    public void selectTimes(ObservableList<String> subTimes){
+        int index = startTimeComboBox.getSelectionModel().getSelectedIndex() + 1;
+
+        ObservableList<String> endTime = FXCollections.observableArrayList(subTimes.subList(index, subTimes.size() -1));
+        final int[] index1 = {-1};
+        boolean status = endTime.stream().anyMatch(be -> {
+            endTime.indexOf(be);
+            int i = endTime.indexOf(be);
+            if(endTime.indexOf(be) < endTime.size() -1) {
+                LocalTime l = LocalTime.parse(endTime.get(i));
+                LocalTime ll = LocalTime.parse(endTime.get(i + 1));
+                if (!l.plusMinutes(15).equals(ll)) {
+                    index1[0] = i+1;
+                    return true;
+
+                }
+            }
+            return false;
+        });
+        System.out.println("index[0] " + index1[0]);
+        ObservableList<String> endOfTimes;
+        if(status)
+            endOfTimes = FXCollections.observableArrayList(endTime.subList(1, index1[0]));
+        else
+            endOfTimes = endTime;
+
+        endTimeComboBox.setItems(endOfTimes);
+        endTimeComboBox.getSelectionModel().select(0);
     }
 
     /**

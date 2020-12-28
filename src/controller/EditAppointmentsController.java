@@ -352,12 +352,38 @@ public class EditAppointmentsController implements Initializable {
         endTimeComboBox.setItems(subTimes);
         endTimeComboBox.getSelectionModel().select(1);
         startTimeComboBox.setOnAction((e) -> {
-            int index = startTimeComboBox.getSelectionModel().getSelectedIndex() + 1;
-            ObservableList<String> endTime = FXCollections.observableArrayList(subTimes.subList(index, subTimes.size() -1 ));
-//                    System.out.println(index);
-            endTimeComboBox.setItems(endTime);
-            endTimeComboBox.getSelectionModel().select(0);
+            selectTimes(subTimes);
         });
+    }
+
+    public void selectTimes(ObservableList<String> subTimes){
+        int index = startTimeComboBox.getSelectionModel().getSelectedIndex() + 1;
+
+        ObservableList<String> endTime = FXCollections.observableArrayList(subTimes.subList(index, subTimes.size() -1));
+        final int[] index1 = {-1};
+        boolean status = endTime.stream().anyMatch(be -> {
+            endTime.indexOf(be);
+            int i = endTime.indexOf(be);
+            if(endTime.indexOf(be) < endTime.size() -1) {
+                LocalTime l = LocalTime.parse(endTime.get(i));
+                LocalTime ll = LocalTime.parse(endTime.get(i + 1));
+                if (!l.plusMinutes(15).equals(ll)) {
+                    index1[0] = i+1;
+                    return true;
+
+                }
+            }
+            return false;
+        });
+        System.out.println("index[0] " + index1[0]);
+        ObservableList<String> endOfTimes;
+        if(status)
+            endOfTimes = FXCollections.observableArrayList(endTime.subList(1, index1[0]));
+        else
+            endOfTimes = endTime;
+
+        endTimeComboBox.setItems(endOfTimes);
+        endTimeComboBox.getSelectionModel().select(0);
     }
 
 

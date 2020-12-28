@@ -45,13 +45,13 @@ public class TimeConverter {
 
     public static LocalTime getLocalTime(String time) {
         DateTimeFormatter dtFormatter = DateTimeFormatter.ofPattern("HH:mm:ss");
-        System.out.println(time.substring(11, 19));
+//        System.out.println(time.substring(11, 19));
         return LocalTime.parse(time.substring(11, 19), dtFormatter);
     }
 
     public static LocalTime getLocalTime2(String time) {
         DateTimeFormatter dtFormatter = DateTimeFormatter.ofPattern("HH:mm:ss");
-        System.out.println(time.substring(0, 8));
+//        System.out.println(time.substring(0, 8));
         return LocalTime.parse(time.substring(0, 8), dtFormatter);
     }
 
